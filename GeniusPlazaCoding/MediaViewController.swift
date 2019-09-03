@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MediaViewController.swift
 //  GeniusPlazaCoding
 //
 //  Created by Nitin Pabba on 9/3/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MediaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
