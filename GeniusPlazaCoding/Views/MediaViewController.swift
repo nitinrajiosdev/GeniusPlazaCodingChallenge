@@ -10,9 +10,14 @@ import UIKit
 
 class MediaViewController: UIViewController {
     let viewModel = MediaViewModel()
-
-    let mainTableView: UITableView = UITableView(frame: .zero)
-
+    
+    private lazy var mainTableView: UITableView = {
+        let tableview = UITableView(frame: .zero)
+        let cellType = MediaTableViewCell.self
+        tableview.register(cellType, forCellReuseIdentifier: String(describing: cellType))
+        return tableview
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
@@ -52,12 +57,11 @@ extension MediaViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        let identifier = String(describing: MediaTableViewCell.self)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? MediaTableViewCell else {
+            fatalError("Illegal application state! A cell with identifier: \(identifier) needs to be registered with the tableview!")
         }
-        let media = viewModel.mediaArray?[indexPath.row]
-        cell?.textLabel?.text = media?.name
-        return cell ?? UITableViewCell()
+        cell.configure(withViewModel: self.viewModel, atIndexPath: indexPath)
+        return cell
     }
 }

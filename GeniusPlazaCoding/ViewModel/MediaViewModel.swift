@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Response: Codable {
     var feed: Feed
@@ -26,6 +27,8 @@ struct Media: Codable {
     }
 }
 
+typealias ImageCompletion = (UIImage?) -> Void
+
 class MediaViewModel {
     typealias NotifyBlock = () -> Void
     var mediaArray: [Media]? {
@@ -35,6 +38,11 @@ class MediaViewModel {
     }
     var notifyWhenDataComplete: NotifyBlock?
     
+    private(set) lazy var imageCache: [String: UIImage?] = {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleMemoryWarningNotification), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
+        return [:]
+    }()
+    
     // MARK: - Public
     
     func getMedia() {
@@ -42,6 +50,40 @@ class MediaViewModel {
             self.mediaArray = responseArray
         }
     }
+    
+    func getMedia(atIndexPath indexPath: IndexPath) -> Media? {
+        guard indexPath.row >= 0 && indexPath.row < self.mediaArray?.count ?? 0 else {
+            return nil
+        }
+        return self.mediaArray?[indexPath.row]
+    }
+    
+    func getImage(forMedia media: Media?, completion: @escaping ImageCompletion) -> Void {
+        guard let urlString = media?.imageURL else {
+            completion(nil)
+            return
+        }
+        if let cachedImage = self.imageCache[urlString] {
+            completion(cachedImage)
+            return
+        }
+        guard let url = URL.init(string: urlString) else {
+            completion(nil)
+            return
+        }
+        WebService.getData(from: url, completion: { [weak self] (data, _, _) in
+            if let data = data, let image = UIImage.init(data: data) {
+                self?.imageCache[urlString] = image
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            }
+        })
+    }
+    
+    // MARK: - Notification Center Obsevers
+    
+    @objc private func handleMemoryWarningNotification(_ notification: Notification) -> Void {
+        self.imageCache = [:]
+    }
 }
-
-
