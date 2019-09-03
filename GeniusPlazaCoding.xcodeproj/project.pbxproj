@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		83FE5EB3231E2A010026B0B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EB2231E2A010026B0B7 /* AppDelegate.swift */; };
-		83FE5EB5231E2A010026B0B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EB4231E2A010026B0B7 /* ViewController.swift */; };
+		83FE5EB5231E2A010026B0B7 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EB4231E2A010026B0B7 /* MediaViewController.swift */; };
 		83FE5EB8231E2A010026B0B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FE5EB6231E2A010026B0B7 /* Main.storyboard */; };
 		83FE5EBA231E2A010026B0B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FE5EB9231E2A010026B0B7 /* Assets.xcassets */; };
 		83FE5EBD231E2A010026B0B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FE5EBB231E2A010026B0B7 /* LaunchScreen.storyboard */; };
 		83FE5EC8231E2A010026B0B7 /* GeniusPlazaCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EC7231E2A010026B0B7 /* GeniusPlazaCodingTests.swift */; };
 		83FE5ED3231E2A010026B0B7 /* GeniusPlazaCodingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5ED2231E2A010026B0B7 /* GeniusPlazaCodingUITests.swift */; };
+		83FE5EE3231E2FDE0026B0B7 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EE2231E2FDE0026B0B7 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		83FE5EAF231E2A010026B0B7 /* GeniusPlazaCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeniusPlazaCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FE5EB2231E2A010026B0B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		83FE5EB4231E2A010026B0B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		83FE5EB4231E2A010026B0B7 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		83FE5EB7231E2A010026B0B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		83FE5EB9231E2A010026B0B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83FE5EBC231E2A010026B0B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		83FE5ECE231E2A010026B0B7 /* GeniusPlazaCodingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeniusPlazaCodingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FE5ED2231E2A010026B0B7 /* GeniusPlazaCodingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusPlazaCodingUITests.swift; sourceTree = "<group>"; };
 		83FE5ED4231E2A010026B0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83FE5EE2231E2FDE0026B0B7 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,9 @@
 		83FE5EB1231E2A010026B0B7 /* GeniusPlazaCoding */ = {
 			isa = PBXGroup;
 			children = (
+				83FE5EE1231E2FC50026B0B7 /* Service */,
+				83FE5EE0231E2FA80026B0B7 /* Views */,
 				83FE5EB2231E2A010026B0B7 /* AppDelegate.swift */,
-				83FE5EB4231E2A010026B0B7 /* ViewController.swift */,
 				83FE5EB6231E2A010026B0B7 /* Main.storyboard */,
 				83FE5EB9231E2A010026B0B7 /* Assets.xcassets */,
 				83FE5EBB231E2A010026B0B7 /* LaunchScreen.storyboard */,
@@ -123,6 +126,22 @@
 				83FE5ED4231E2A010026B0B7 /* Info.plist */,
 			);
 			path = GeniusPlazaCodingUITests;
+			sourceTree = "<group>";
+		};
+		83FE5EE0231E2FA80026B0B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83FE5EB4231E2A010026B0B7 /* MediaViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83FE5EE1231E2FC50026B0B7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				83FE5EE2231E2FDE0026B0B7 /* WebService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83FE5EB5231E2A010026B0B7 /* ViewController.swift in Sources */,
+				83FE5EE3231E2FDE0026B0B7 /* WebService.swift in Sources */,
+				83FE5EB5231E2A010026B0B7 /* MediaViewController.swift in Sources */,
 				83FE5EB3231E2A010026B0B7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
