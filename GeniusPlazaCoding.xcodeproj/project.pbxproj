@@ -15,6 +15,7 @@
 		83FE5EC8231E2A010026B0B7 /* GeniusPlazaCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EC7231E2A010026B0B7 /* GeniusPlazaCodingTests.swift */; };
 		83FE5ED3231E2A010026B0B7 /* GeniusPlazaCodingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5ED2231E2A010026B0B7 /* GeniusPlazaCodingUITests.swift */; };
 		83FE5EE3231E2FDE0026B0B7 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EE2231E2FDE0026B0B7 /* WebService.swift */; };
+		83FE5EE6231E32170026B0B7 /* MediaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE5EE5231E32170026B0B7 /* MediaViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		83FE5ED2231E2A010026B0B7 /* GeniusPlazaCodingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusPlazaCodingUITests.swift; sourceTree = "<group>"; };
 		83FE5ED4231E2A010026B0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83FE5EE2231E2FDE0026B0B7 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		83FE5EE5231E32170026B0B7 /* MediaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		83FE5EB1231E2A010026B0B7 /* GeniusPlazaCoding */ = {
 			isa = PBXGroup;
 			children = (
+				83FE5EE4231E31FE0026B0B7 /* ViewModel */,
 				83FE5EE1231E2FC50026B0B7 /* Service */,
 				83FE5EE0231E2FA80026B0B7 /* Views */,
 				83FE5EB2231E2A010026B0B7 /* AppDelegate.swift */,
@@ -142,6 +145,14 @@
 				83FE5EE2231E2FDE0026B0B7 /* WebService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		83FE5EE4231E31FE0026B0B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				83FE5EE5231E32170026B0B7 /* MediaViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +289,7 @@
 				83FE5EE3231E2FDE0026B0B7 /* WebService.swift in Sources */,
 				83FE5EB5231E2A010026B0B7 /* MediaViewController.swift in Sources */,
 				83FE5EB3231E2A010026B0B7 /* AppDelegate.swift in Sources */,
+				83FE5EE6231E32170026B0B7 /* MediaViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

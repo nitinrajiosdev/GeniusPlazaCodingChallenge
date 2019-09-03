@@ -8,9 +8,10 @@
 
 import Foundation
 
+typealias MediaCompletion = ([Media]) -> Void
+
 class WebService {
-    
-    static func loadiTunesMedia() {
+    static func loadiTunesMedia(completion: @escaping MediaCompletion) {
         let urlString = "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/10/explicit.json"
         let url = URL(string: urlString)
         
@@ -20,8 +21,14 @@ class WebService {
         
         URLSession.shared.dataTask(with: guardedUrl) { (data, response, error) in
             if let data = data, error == nil {
-                print(String(data: data, encoding: .utf8)!)
+                do {
+                    let decodedResponse = try JSONDecoder().decode(Response.self, from: data)
+                    completion(decodedResponse.feed.results)
+                } catch {
+                    completion([Media]())
+                }
             } else {
+                completion([Media]())
             }
         }.resume()
     }

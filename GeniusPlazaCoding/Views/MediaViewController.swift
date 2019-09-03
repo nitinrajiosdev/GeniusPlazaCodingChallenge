@@ -9,13 +9,21 @@
 import UIKit
 
 class MediaViewController: UIViewController {
-    
+    let viewModel = MediaViewModel()
+
     let mainTableView: UITableView = UITableView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
-        WebService.loadiTunesMedia()
+        mainTableView.dataSource = self
+        viewModel.notifyWhenDataComplete = { [weak self] in
+            //Using weak here, because viewmodel has a strong reference to notifyWhenDataComplete
+            DispatchQueue.main.async {
+                self?.mainTableView.reloadData()
+            }
+        }
+        viewModel.getMedia()
     }
 }
 
@@ -40,10 +48,16 @@ extension MediaViewController {
 //MARK: UITableViewDataSource methods
 extension MediaViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.mediaArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        }
+        let media = viewModel.mediaArray?[indexPath.row]
+        cell?.textLabel?.text = media?.name
+        return cell ?? UITableViewCell()
     }
 }
